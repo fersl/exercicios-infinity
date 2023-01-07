@@ -30,12 +30,8 @@ def modo2(l1, l2, index):
             l1.remove(x)
             l2.append(x)
 
-
-# MODO HARDCODE:
-# pasto2 = pasto1[:len(pasto1)-1]
-# del pasto1[:len(pasto1)-1]
-
 #############################################################
+
 
 print_list(pasto1)
 
