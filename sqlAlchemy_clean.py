@@ -67,7 +67,8 @@ while True:
                 sessao.add(banco_loja_in_insert)
         case 3:
             nome_registro = str(input('Informe o nome do registro a ser editado: ')).title()
-            banco_loja_in_select = sessao.query(Usuario).all()
+            banco_loja_in_select = sessao.query(Usuario).filter(Usuario.nome_usuario == nome_registro).first()
+            print(banco_loja_in_select)
 
             for nome in banco_loja_in_select:
                 if nome_registro in nome.nome_usuario:
@@ -81,13 +82,13 @@ while True:
                     elif editar_registro == 'Endereço':
                         # editando um registro pelo endereço (update)
                         novo_endereco = str(input('Informe o novo endereço: '))
-                        Sessao.query(Usuario).filter(Usuario.nome_usuario == nome_registro).update(
+                        sessao.query(Usuario).filter(Usuario.nome_usuario == nome_registro).update(
                             {'endereco_usuario': novo_endereco})
 
                     elif editar_registro == 'Idade':
                         # editando um registro pela idade (update)
                         nova_idade = str(input('Informe a nova idade: '))
-                        Sessao.query(Usuario).filter(Usuario.nome_usuario == nome_registro).update(
+                        sessao.query(Usuario).filter(Usuario.nome_usuario == nome_registro).update(
                             {'idade_usuario': nova_idade})
                     else:
                         print('Campo não encontrado!')
